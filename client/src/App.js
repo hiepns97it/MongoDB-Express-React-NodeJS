@@ -1,18 +1,21 @@
-import Ladings from './pages/Ladings'
-import styled from 'styled-components'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import {Dashboard, Register, Ladings, Error} from './pages'
 
-const Button  = styled.button`
-  background: red;
-  color: white;
-  font-size: 1rem;
-`
 function App() {
   return (
-    <div>
-      <Button>Click</Button>
-      <h1>JOB</h1>
-      <Ladings/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route
+            path='/'
+            element={
+             <Dashboard/>
+            }
+        />
+        <Route path='/register' element={<Register/>} />
+        <Route path='/landing' element={<Ladings />} />
+        <Route path='*' element={<Error/>} />
+      </Routes>
+  </BrowserRouter>
   );
 }
 
