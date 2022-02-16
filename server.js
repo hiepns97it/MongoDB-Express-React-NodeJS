@@ -1,7 +1,9 @@
+import cors from 'cors'
 import express from 'express'
 import dotenv from 'dotenv'
 dotenv.config()
 import 'express-async-errors'
+import morgan from 'morgan'
 
 // mongodb
 import connectDB from './db/connect.js'
@@ -16,7 +18,17 @@ import errorHandlerMiddleware from './middleware/error-handler.js'
 
 const app = express()
 
+if (process.env.NODE_ENV !== 'production') {
+  app.use(morgan('dev'))
+}
+
+app.use(cors())
 app.use(express.json())
+
+
+app.get('/', (req, res) => {
+  res.send({msg: 'Welcome'})
+})
 
 // router
 app.use('/api/v1/auth', authRouter)
