@@ -1,9 +1,14 @@
 import React, {useEffect} from "react";
+import { JobsContainer, SearchContainer } from '../../components'
 
-function AllJobs() {
+
+const AllJobs = () => {
   return (
-    <h1>AllJobs</h1>
-  );
+    <>
+      <SearchContainer />
+      <JobsContainer />
+    </>
+  )
 }
 
 export default AllJobs;
